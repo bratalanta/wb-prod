@@ -1,5 +1,5 @@
 <template>
-    <v-card min-width="200" min-height="250" class="card d-flex flex-column" color="#1B1E2D" flat>
+    <v-card :width="cardWidth" min-height="250" class="card d-flex flex-column" color="#1B1E2D" flat>
       <h3 class="card__title">10 автоответов</h3>
       <div class="card__subtitle">3₽ / штука</div>
       <v-card class="inner-card" flat color="#232633">
@@ -21,14 +21,22 @@
 
 <script>
 export default {
-
+  computed: {
+    cardWidth() {
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs': return "100%"
+        case 'sm': return "45%"
+        default: return 200
+      }
+    },
+  }
 }
 </script>
 
 <style lang="scss" scoped>
   .card {
     padding: 10px;
-    margin-right: 20px;
+    margin: 0 20px 20px 0;
 
     &__title {
       color: white;
