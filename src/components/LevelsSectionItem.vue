@@ -1,7 +1,5 @@
 <template>
-  <article :class="['d-flex', 'align-center', 'level', 'justify-center',
-    {'flex-column': smAndUp}
-  ]">
+  <article class="d-flex flex-column align-center level">
     <div
         :class="[
             'mb-1', 'mb-md-5', {'level__polygon': levelNumber === 1 || levelNumber === 5},
@@ -12,19 +10,15 @@
       <img src="../assets/level/next.svg" alt="" v-else-if="levelNumber === 2">
       <img src="../assets/level/default.svg" alt="" v-else>
     </div>
-    <div :class="['d-flex', 'flex-column', 'align-center', {
-      'ml-10': !smAndUp,
-    }]">
-      <div class="level__price">{{levelPrice[levelNumber]}} ₽</div>
-      <div class="level__text">Уровень {{ levelNumber }}</div>
-      <v-tooltip right v-model="isTooltipDisplayed" :open-on-hover="false" v-if="levelNumber === 1">
-        <template v-slot:activator="{on}">
-          <img src="../assets/level/gift-active.svg" class="level__gift" v-on.self="on" @click.self="isTooltipDisplayed = !isTooltipDisplayed" alt="">
-        </template>
-        <span>Удаление отзывов - 5 шт. <br> Лайки на бренд - 5 шт. <br> Лайки на товар - 5 шт.</span>
-      </v-tooltip>
-      <img src="../assets/level/gift.svg" class="level__gift" alt="" v-else>
-    </div>
+    <div class="level__price">{{levelPrice[levelNumber]}} ₽</div>
+    <div class="level__text">Уровень {{ levelNumber }}</div>
+    <v-tooltip right v-model="isTooltipDisplayed" :open-on-hover="false" v-if="levelNumber === 1">
+      <template v-slot:activator="{on}">
+        <img src="../assets/level/gift-active.svg" class="level__gift" v-on.self="on" @click.self="isTooltipDisplayed = !isTooltipDisplayed" alt="">
+      </template>
+      <span>Удаление отзывов - 5 шт. <br> Лайки на бренд - 5 шт. <br> Лайки на товар - 5 шт.</span>
+    </v-tooltip>
+    <img src="../assets/level/gift.svg" class="level__gift" alt="" v-else>
   </article>
 </template>
 
@@ -68,7 +62,7 @@ export default {
   width: 3px;
   border-radius: 9px;
 
-  top: 67px;
+  top: 65px;
   left: 27px;
 }
 
@@ -132,7 +126,7 @@ export default {
 
     &::after {
       @include progress-bar-sm;
-      height: 805px;
+      height: 737px;
       background: rgba(34, 44, 60, 1);
       z-index: -2;
     }
