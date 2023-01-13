@@ -16,6 +16,7 @@
 <script>
 import LevelsSectionItem from "@/components/LevelsSectionItem.vue";
 
+
 export default {
   components: {LevelsSectionItem},
   computed: {

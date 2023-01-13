@@ -12,19 +12,18 @@
     </div>
     <div class="level__price">{{levelPrice[levelNumber]}} ₽</div>
     <div class="level__text">Уровень {{ levelNumber }}</div>
-    <v-tooltip right v-model="isTooltipDisplayed" :open-on-hover="false" v-if="levelNumber === 1">
-      <template v-slot:activator="{on}">
-        <img src="../assets/level/gift-active.svg" class="level__gift" v-on.self="on" @click.self="isTooltipDisplayed = !isTooltipDisplayed" alt="">
+    <v-tooltip :max-width="!smAndUp ? '150' : '100%'" right v-model="isTooltipDisplayed" :open-on-hover="false" v-if="levelNumber === 1">
+      <template v-slot:activator="{on}" >
+        <img v-click-outside="hide" src="../assets/level/gift-active.svg" class="level__gift" v-on.self="on" @click.self="isTooltipDisplayed = !isTooltipDisplayed" alt="">
       </template>
       <span>Удаление отзывов - 5 шт. <br> Лайки на бренд - 5 шт. <br> Лайки на товар - 5 шт.</span>
     </v-tooltip>
     <img src="../assets/level/gift.svg" class="level__gift" alt="" v-else>
   </article>
 </template>
-
 <script>
-
 import LevelFulfilled from "@/components/LevelFulfilled.vue";
+import ClickOutside from 'vue-click-outside'
 
 export default {
   components: {LevelFulfilled},
@@ -34,6 +33,14 @@ export default {
         type: Number
       }
     }
+  },
+  methods: {
+    hide() {
+      this.isTooltipDisplayed = false
+    }
+  },
+  directives: {
+    ClickOutside
   },
   data() {
     return {
@@ -64,6 +71,28 @@ export default {
 
   top: 65px;
   left: 27px;
+}
+
+.popper {
+  z-index: 5;
+  background: rgba(116, 130, 155, 0.55);
+  backdrop-filter: blur(9px);
+  border: none;
+
+  &__arrow {
+    background: rgba(116, 130, 155, 0.55);
+    width: 100px;
+    border-color: transparent transparent transparent rgba(116, 130, 155, 0.55);
+  }
+}
+
+.arrow {
+  width: 100px;
+}
+
+.popper .popper__arrow {
+  border-color: transparent transparent transparent rgba(116, 130, 155, 0.55);
+  width: 100px;
 }
 
 .v-tooltip__content {
