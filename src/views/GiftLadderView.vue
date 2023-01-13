@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-<!--  <v-container fluid>-->
     <nav>
       <h1 class="white--text nav-title">Личный кабинет</h1>
         <v-tabs flat dark slider-color="#5181B8" background-color="#1D1625" color="white" class="tabs">
@@ -17,7 +16,6 @@
       <ServicesSection />
       <PromoSection />
     </div>
-<!--  </v-container>-->
   </div>
 </template>
 
@@ -35,6 +33,10 @@ export default {
   .container {
     margin: 38px 35px 50px 35px;
     padding: 0;
+  }
+
+  .v-slide-group__prev {
+    display: none !important;
   }
 
   .v-tab {

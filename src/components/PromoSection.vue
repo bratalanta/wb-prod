@@ -2,7 +2,7 @@
   <section class="promo">
     <h2 class="promo__title">У меня есть промокод</h2>
     <div class="promo__text">Введите промокод в поле ниже для получения бонусов</div>
-    <v-form class="promo__form">
+    <v-form :class="['promo__form', {'xs-size': xsSize, 'md-size': mdSize}]">
       <v-text-field v-model="promo" dense solo hide-details hide-spin-buttons background-color="#222C3C" flat dark class="promo__input"></v-text-field>
       <v-btn dark block color="#6A65FF" height="40" class="white--text font-weight-medium" :disabled="!promo">активировать</v-btn>
     </v-form>
@@ -14,6 +14,14 @@ export default {
   data() {
     return {
       promo: ''
+    }
+  },
+  computed: {
+    xsSize() {
+      return this.$vuetify.breakpoint.name === 'xs'
+    },
+    mdSize() {
+      return this.$vuetify.breakpoint.name === 'sm'
     }
   }
 }
@@ -29,6 +37,14 @@ export default {
   }
   &__form {
     max-width: 240px;
+
+    &.xs-size {
+      max-width: 100%;
+    }
+
+    &.md-size {
+      max-width: 48%;
+    }
 
     & > * {
       margin-bottom: 10px;

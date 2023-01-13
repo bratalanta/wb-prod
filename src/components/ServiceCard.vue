@@ -1,7 +1,7 @@
 <template>
     <v-card :width="cardWidth" min-height="250" class="card d-flex flex-column" color="#1B1E2D" flat>
-      <h3 class="card__title">10 автоответов</h3>
-      <div class="card__subtitle">3₽ / штука</div>
+      <h3 class="card__title">{{cardInfo[cardNumber].title}}</h3>
+      <div class="card__subtitle">{{cardInfo[cardNumber].subtitle}}</div>
       <v-card class="inner-card" flat color="#232633">
         <div class="inner-card__text">Срок использования</div>
         <div class="inner-card__date">2 месяцев</div>
@@ -14,18 +14,44 @@
         </div>
       </v-card>
       <v-card-actions class="pa-0">
-        <v-btn block color="#6A65FF" height="40" class="white--text font-weight-medium">купить за 30₽</v-btn>
+        <v-btn block color="#6A65FF" height="40" class="white--text font-weight-medium">купить за {{cardInfo[cardNumber].price}}₽</v-btn>
       </v-card-actions>
-    </v-card>
+  </v-card>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      cardInfo: {
+        1: {
+          title: '10 автоответов',
+          subtitle: '3₽ / штука',
+          price: '30'
+        },
+        2: {
+          title: '100 автоответов',
+          subtitle: '3₽ / штука',
+          price: '300'
+        },
+        3: {
+          title: 'Безлимит',
+          subtitle: '5000₽ / месяц',
+          price: '5000'
+        },
+      }
+    }
+  },
+  props: {
+    cardNumber: {
+      type: Number
+    }
+  },
   computed: {
     cardWidth() {
       switch (this.$vuetify.breakpoint.name) {
         case 'xs': return "100%"
-        case 'sm': return "45%"
+        case 'sm': return "48%"
         default: return 200
       }
     },
@@ -36,7 +62,6 @@ export default {
 <style lang="scss" scoped>
   .card {
     padding: 10px;
-    margin: 0 20px 20px 0;
 
     &__title {
       color: white;

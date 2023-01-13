@@ -2,9 +2,7 @@
   <section class="services">
     <h2 class="services__title text-h6">До получения следующего уровня осталось немного</h2>
     <div class="services__cards">
-      <ServiceCard />
-      <ServiceCard />
-      <ServiceCard />
+      <ServiceCard v-for="i in 3" :cardNumber="i" :key="i"/>
     </div>
   </section>
 </template>
@@ -14,15 +12,6 @@ import ServiceCard from "@/components/ServiceCard.vue";
 
 export default {
   components: {ServiceCard},
-  computed: {
-    cardWidth() {
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs': return "100%"
-        case 'sm': return "45%"
-        default: return 200
-      }
-    },
-  }
 }
 </script>
 
@@ -38,8 +27,7 @@ export default {
     &__cards {
       display: flex;
       flex-wrap: wrap;
-      margin-right: -20px;
+      gap: 20px;
     }
   }
-
 </style>
