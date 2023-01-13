@@ -12,7 +12,7 @@
     </div>
     <div class="level__price">{{levelPrice[levelNumber]}} ₽</div>
     <div class="level__text">Уровень {{ levelNumber }}</div>
-    <v-tooltip :max-width="!smAndUp ? '150' : '100%'" right v-model="isTooltipDisplayed" :open-on-hover="false" v-if="levelNumber === 1">
+    <v-tooltip :max-width="!smAndUp ? '125' : '100%'" right v-model="isTooltipDisplayed" :open-on-hover="false" v-if="levelNumber === 1">
       <template v-slot:activator="{on}" >
         <img v-click-outside="hide" src="../assets/level/gift-active.svg" class="level__gift" v-on.self="on" @click.self="isTooltipDisplayed = !isTooltipDisplayed" alt="">
       </template>
